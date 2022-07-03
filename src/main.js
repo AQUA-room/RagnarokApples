@@ -1,7 +1,9 @@
 // モジュールロード
-const { app, Menu, BrowserWindow, dialog } = require('electron')
-const { asarDownLoad } = require('./asarDownLoad.js')
-const { createWindow, createSplash } = require('./createWindow.js');
+import electron from 'electron';
+import { asarDownLoad } from './asarDownLoad.js';
+import { createWindow, createSplash } from './createWindow.js';
+
+const { app, Menu, BrowserWindow, dialog } = electron
 
 /**
  * メインプロセス
@@ -25,32 +27,20 @@ const mainProcess = async () => {
 // メニュー
 //------------------------------------
 // メニューを準備する
-const template = Menu.buildFromTemplate([
-    {
-      label: "アプリ",
-      submenu: [
-        // { role:'close', label:'ウィンドウを閉じる' }
-        { role:'togglefullscreen', label:'全画面切り替え' },
-        { role:'quit', label:'アプリを終了' }
-      ]
-    },
-    // {
-    //   label: "編集",
-    //   submenu: [
-    //     { role:'undo',  label:'元に戻す' },
-    //     { role:'redo',  label:'やり直す' },
-    //     { type:'separator' },
-    //     { role:'cut',   label:'切り取り' },
-    //     { role:'copy',  label:'コピー' },
-    //     { role:'paste', label:'貼り付け' },
-    //   ]
-    // }
-]);
+const template = {
+    label: "アプリ",
+    submenu: [
+    // { role:'close', label:'ウィンドウを閉じる' }
+    { role:'togglefullscreen', label:'全画面切り替え' },
+    { role:'quit', label:'アプリを終了' }
+    ]
+}
+const menu = Menu.buildFromTemplate(template);
 
 if (app.isPackaged) {//アプリがパッケージングされてる場合
     
     // メニューを適用する
-    Menu.setApplicationMenu(template);
+    Menu.setApplicationMenu(menu);
 }
 
 // 初期化が終了したらウィンドウをを新規に作成する

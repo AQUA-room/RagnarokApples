@@ -3,7 +3,8 @@
   "productName": "RA",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.js",
+  "main": "src/main.cjs",
+  "type": "module",
   "scripts": {
     "start": "electron .",
     "build-mac": "electron-builder --mac --x64",
@@ -31,6 +32,7 @@
   },
   "build": {
     "appId": "net.makitokatsube.app.1st",
+    "asar": false,
     "files": [
       "node_modules/",
       "package.json",

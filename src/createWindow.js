@@ -1,5 +1,5 @@
-const { app, BrowserWindow } = require('electron')
-
+import pkg from 'electron'
+const { app, BrowserWindow } = pkg
 /**
  * ウィンドウを作成する
  */
@@ -61,5 +61,7 @@ const createSplash = () => {
     })
 }
 
-exports.createWindow = createWindow
-exports.createSplash = createSplash
+const _createWindow = createWindow
+export { _createWindow as createWindow }
+const _createSplash = createSplash
+export { _createSplash as createSplash }

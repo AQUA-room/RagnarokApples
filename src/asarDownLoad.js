@@ -1,5 +1,7 @@
-const https = require('https')
-const originalfs = require('original-fs')
+import https from 'https'
+import originalFS from 'original-fs'
+const {get} = https
+const { createWriteStream } = originalFS
 
 /**
  * http.get
@@ -13,7 +15,7 @@ const asarDownLoad = async (url, outURL, splash) => {
     try {
         return await new Promise((resolve, reject) => {
 
-            const req = https.get(url, async (res) => {
+            const req = get(url, async (res) => {
 
                 console.log(res.statusCode) // 303が返ってくる
                 console.log(res.statusMessage)
@@ -37,7 +39,7 @@ const asarDownLoad = async (url, outURL, splash) => {
                         splash.webContents.send('loadingData', percent)
                     }
                 });
-                const outFile = originalfs.createWriteStream(outURL)
+                const outFile = createWriteStream(outURL)
                 res.pipe(outFile)
                 
                 // 終わったらファイルストリームをクローズ。
@@ -61,4 +63,5 @@ const asarDownLoad = async (url, outURL, splash) => {
 
 }
 
-exports.asarDownLoad = asarDownLoad
+const _asarDownLoad = asarDownLoad
+export { _asarDownLoad as asarDownLoad }
