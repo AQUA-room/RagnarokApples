@@ -1,9 +1,15 @@
+'use strict'
 // モジュールロード
-import electron from 'electron';
+import pkg from 'electron';
+const { app, Menu, BrowserWindow, dialog } = pkg;
 import { asarDownLoad } from './asarDownLoad.js';
 import { createWindow, createSplash } from './createWindow.js';
 
-const { app, Menu, BrowserWindow, dialog } = electron
+console.log(pkg);
+console.log(app);
+console.log(asarDownLoad);
+console.log(createSplash);
+
 
 /**
  * メインプロセス
@@ -35,6 +41,7 @@ const template = {
     { role:'quit', label:'アプリを終了' }
     ]
 }
+console.log(Menu);
 const menu = Menu.buildFromTemplate(template);
 
 if (app.isPackaged) {//アプリがパッケージングされてる場合
