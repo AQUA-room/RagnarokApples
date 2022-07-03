@@ -42,7 +42,7 @@ const template = {
     ]
 }
 console.log(Menu);
-const menu = Menu.buildFromTemplate(template);
+const menu = Menu.buildFromTemplate([template]);
 
 if (app.isPackaged) {//アプリがパッケージングされてる場合
     
