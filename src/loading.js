@@ -1,4 +1,5 @@
-const { ipcRenderer } = require('electron')
+import pkg from 'electron';
+const { ipcRenderer } = pkg
 // console.log('ok');
 
 window.onload = () => {
