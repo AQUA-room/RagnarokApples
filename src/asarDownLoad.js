@@ -1,6 +1,6 @@
 import https from 'https'
 import originalFS from 'original-fs'
-const {get} = https
+const { get } = https
 const { createWriteStream } = originalFS
 
 /**

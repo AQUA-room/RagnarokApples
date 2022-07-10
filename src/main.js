@@ -7,6 +7,7 @@ import { createWindow, createSplash } from './createWindow.js';
 
 console.log(pkg);
 console.log(app);
+console.log(Menu);
 console.log(asarDownLoad);
 console.log(createSplash);
 
